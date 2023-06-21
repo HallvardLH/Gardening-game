@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gardening game</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/garden.css">
+    <link rel="stylesheet" href="css/side-menu.css">
+    <link rel="stylesheet" href="css/tooltip.css">
+</head>
+<body>
+    <nav>
+        <div>Garden</div>
+        <div>Market</div>
+    </nav>
+    <section id="game-container" class="game-container">
+        <section id="garden-container" class="garden-container">
+            <div class="button-with-icon" onclick="toggleSideMenu(false, 'storage')">
+                <i class="material-icons">add</i>
+                <div class="has-tooltip" data-tooltip="addPlant">Add new growing space</div>
+            </div>
+            <section id="growing-spaces-container" class="growing-spaces-container"></section>
+        </section>
+        <section id="plant-container" class="plant-container hidden">
+            <i id="back-button" class="material-icons back-button" onclick="switchGameMenu('garden-container')">arrow_back</i>
+            <h1 id="plant-name" class="font-large">Plant name placeholder</h1>
+            <!-- <img class="plant-image" id="plant-image" alt="" draggable="false"/> -->
+            <div class="plant-image-container">
+                <img id="plant-image" class="plant" src="images/No-plant.png"/>
+                <img id="pot-image" class="pot" src="images/No-soil.png"/>
+            </div>
+            <div id="progress-bar-with-timer" class="progress-bar-with-timer">
+                <div id="progress-bar-container" class="progress-bar-container">
+                    <div id="progress-bar" class="progress-bar"></div>
+                </div>
+                <p id="time-left" class="font-small" style="text-align: center;"></p>
+            </div>
+            <div class="horizontal-icon-boxes">
+                <div class="horizontal-icon-box-container" onmouseenter="showTooltip('test')" onmouseleave="hideTooltip()">
+                    <i id="waterLevel-notif" class="material-icons horizontal-icon-box-notification hidden">priority_high</i>
+                    <div class="horizontal-icon-box">
+                        <div class="horizontal-icon-box-icon">
+                            <i style="color: #1D869D" class="material-icons">water_drop</i>
+                        </div>
+                        <div class="horizontal-icon-box-text">
+                            <p class="font-small">Water in soil</p>
+                            <p class="font-small"><span id="water-level">0</span>/100</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="horizontal-icon-box-container">
+                    <i id="health-notif" class="material-icons horizontal-icon-box-notification hidden">priority_high</i>
+                    <div class="horizontal-icon-box">
+                        <div class="horizontal-icon-box-icon">
+                            <i style="color: #C64949" class="material-icons">favorite</i>
+                        </div>
+                        <div class="horizontal-icon-box-text">
+                            <p class="font-small">Health</p>
+                            <p class="font-small"><span id="health">100</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="horizontal-icon-box-container" onmouseenter="showTooltip('test')" onmouseleave="hideTooltip()">
+                    <i id="happiness-notif" class="material-icons horizontal-icon-box-notification hidden">priority_high</i>
+                    <div class="horizontal-icon-box">
+                        <div class="horizontal-icon-box-icon">
+                            <i class="material-icons">sentiment_satisfied</i>
+                        </div>
+                        <div class="horizontal-icon-box-text">
+                            <p class="font-small">Happiness</p>
+                            <p class="font-small"><span id="happiness">100</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="plant-actions">
+                <div id="action-fill" class="boxed icon-with-text pulsate" onclick="toggleSideMenu(false, 'soil')">
+                    <i class="material-icons">compost</i>
+                    <p class="font-small">Fill with soil</p>
+                </div>
+                <div id="action-seed" class="boxed icon-with-text pulsate" onclick="toggleSideMenu(false, 'seed')">
+                    <i class="material-icons">grass</i>
+                    <p class="font-small">Plant seed</p>
+                </div>
+                <div id="action-save" class="boxed icon-with-text pulsate" onclick="savePlant()">
+                    <i class="material-icons">spa</i>
+                    <p class="font-small">Attempt to save</p>
+                </div>
+            </div>
+            <div class="plant-status-messages" id="status-messages">
+                
+            </div>
+            <div class="plant-actions">
+                <div class="boxed icon-with-text" onclick="toggleSideMenu(false, 'read')">
+                    <i class="material-icons">menu_book</i>
+                    <p class="font-small">Read about</p>
+                </div>
+                <div class="boxed icon-with-text" onclick="toggleSideMenu(false, 'plant')">
+                    <i class="material-icons">search</i>
+                    <p class="font-small">Inspect</p>
+                </div>
+                <div class="boxed icon-with-text" onclick="waterPlant()">
+                    <i class="material-icons">water_drop</i>
+                    <p class="font-small">Water</p>
+                </div>
+                <div class="boxed icon-with-text">
+                    <i class="material-icons">storefront</i>
+                    <p class="font-small">Sell in market</p>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <div id="side-menu" class="side-menu">
+        <i id="side-menu-exit" class="material-icons back-button side-menu-exit" onclick="toggleSideMenu(true)">arrow_back</i>
+        <div id="side-menu-content" class="side-menu-content"></div>
+    </div>
+
+    <div id="loading-screen" class="loading-screen hidden">
+        <div class="progress-bar-container">
+            <div id="loading-progress-bar" class="progress-bar"></div>
+        </div>
+    </div>
+
+    <div id="tooltip" class="tooltip hidden">Test here</div>
+
+    <script src="js/main.js"></script>
+    <script src="js/helpers.js"></script>
+    <script src="js/plant-data.js"></script>
+    <script src="js/side-menu.js"></script>
+    <script src="js/plant.js"></script>
+    <script src="js/garden.js"></script>
+    <script src="js/tooltip.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--background-light);
+    color: white;
+    padding: 16px 10px;
+    font-size: var(--font-size-medium);
+}

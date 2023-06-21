@@ -1,0 +1,30 @@
+.side-menu {
+    position: fixed;
+    /* Full height of page minus height of navbar + 20px for top and bottom padding */
+    height: calc(100% - 60px);
+    background-color: white;
+    width: 350px;
+    z-index: 2;
+    transition: 0.3s ease;
+    bottom: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    left: -425px;
+    background-color: var(--background-light);
+    /* padding: 10px; */
+}
+
+.side-menu-content {
+    padding: 10px;
+    /* margin-top: 40px; */
+}
+
+.side-menu-header {
+    text-align: center;
+}
+
+.side-menu-exit {
+    left: -425px;
+    top: 70px;
+    transition: 0.3s ease;
+}

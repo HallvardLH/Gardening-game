@@ -1,0 +1,117 @@
+.growing-spaces-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px; 
+    flex-wrap: wrap;
+}
+
+.growing-space {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+    width: 200px;
+    height: 210px;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.growing-space-image {
+    height: 100px;
+    width: 100px;
+}
+
+.growing-space .plant-image-container {
+    text-align: start;
+    height: 120px;
+    width: 120px;
+}
+
+.growing-space .plant {
+    bottom: 50px;
+}
+
+.plant-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 2rem;
+}
+
+.plant-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.plant-actions>div {
+    width: 125px;
+}
+
+.plant-actions p {
+    margin: 0;
+}
+
+.plant-actions i {
+    font-size: 3rem;
+    padding: 10px;
+}
+
+.plant-image {
+    height: 175px;
+    width: 175px;
+}
+
+.plant-image-container {
+    position: relative;
+    height: 175px;
+    width: 175px;
+}
+
+.pot, .plant {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.plant {
+    z-index: 2;
+    bottom: 73px;
+}
+
+.pot {
+    z-index: 1;
+}
+
+.progress-bar-with-timer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.progress-bar-container {
+    display: flex;
+    align-items: center;
+    height: 10px;
+    width: 35%;
+    background-color: var(--background-light);
+    border-radius: 4px;
+    outline: 1px solid var(--light-gray);
+    overflow: hidden;
+}
+
+.growing-space .progress-bar-container {
+    margin-top: 10px;
+    width: 80%;
+}
+
+.progress-bar {
+    height: 10px;
+    width: 0%;
+    background-color: var(--highlight-color);
+    /* border-radius: 8px; */
+    transition: 0.3s ease;
+}
